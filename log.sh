@@ -6,3 +6,4 @@ ENTRY="## ${DATE}  [${SCOPE}]\n\n${2}\n\n"
 echo -e "$ENTRY$(cat CLAUDE_LOG.md)" > CLAUDE_LOG.md
 git add CLAUDE_LOG.md
 git commit -m "docs: log ${DATE} ${SCOPE}"
+git push
