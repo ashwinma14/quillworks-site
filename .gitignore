@@ -54,3 +54,7 @@ dist/
 # IDE / editor folders
 .vscode/
 .idea/
+
+# Claude AI tooling (keep local only)
+.claude/
+CLAUDE_LOG.md

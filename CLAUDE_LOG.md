@@ -1,1 +1,0 @@
-# Quillworks – AI session log (newest entries first)
