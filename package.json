@@ -12,6 +12,7 @@
     "lint": "next lint",
     "format": "next lint --fix && prettier '**/*.{json,yaml}' --write --ignore-path .gitignore",
     "check-types": "tsc --noEmit --pretty",
+    "log": "bash ./log.sh",
     "prepare": "husky install"
   },
   "dependencies": {
