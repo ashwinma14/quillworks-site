@@ -33,3 +33,24 @@ local
 
 # vercel
 .vercel
+
+# Additional patterns for clean site-only repo
+
+# Package manager debug logs
+pnpm-debug.log*
+
+# Build artifacts & caching
+.turbo/
+dist/
+.eslintcache
+
+# Environment & secrets (comprehensive)
+.env
+.env.*
+
+# Netlify metadata
+.netlify/
+
+# IDE / editor folders
+.vscode/
+.idea/
