@@ -6,13 +6,13 @@ test.describe('Visual parity', () => {
   });
 
   test('baseline', async ({ page }) => {
-    await page.goto('/baseline');
+    await page.goto('http://localhost:3004/baseline');
     await page.waitForTimeout(200);
     await expect(page).toHaveScreenshot('baseline.png');
   });
 
   test('react', async ({ page }) => {
-    await page.goto('/');
+    await page.goto('http://localhost:3004/');
     await page.waitForTimeout(200);
     await expect(page).toHaveScreenshot('react.png');
   });
