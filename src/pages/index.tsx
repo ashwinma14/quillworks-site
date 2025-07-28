@@ -12,7 +12,7 @@ export default function Home() {
         <title>Quillworks – Let Digital Come to You</title>
       </Head>
       <NavBar />
-      <main>
+      <main id="main">
         <Hero />
         <StoryCards />
         <Thesis />

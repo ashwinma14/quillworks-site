@@ -1,25 +1,16 @@
 import { expect, test } from '@playwright/test';
 
-const VIEWPORT = { width: 1440, height: 900 };
-async function snapshot(page: any, name: string) {
-  await page.setViewportSize(VIEWPORT);
-  // Wait for page load and any animations
-  await page.waitForLoadState('networkidle');
-  await page.waitForTimeout(2000); // Allow time for reveal animations
-  await page.evaluate(() => window.scrollBy(0, 400)); // trigger card fade-in
-  await page.waitForTimeout(1000); // Allow time for scroll animations
-  await expect(page).toHaveScreenshot(`${name}.png`, {
-    fullPage: false,
-    timeout: 15000,
-  });
-}
+const loadAndSnap = async (page: any, route: string, name: string) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto(route, { waitUntil: 'load' });
+  await page.getByRole('heading', { level: 1 }).waitFor({ state: 'visible' });
+  await expect(page).toHaveScreenshot(`${name}.png`);
+};
 
 test('baseline', async ({ page }) => {
-  await page.goto('/baseline', { waitUntil: 'networkidle' });
-  await snapshot(page, 'baseline');
+  await loadAndSnap(page, '/baseline', 'baseline');
 });
 
 test('react', async ({ page }) => {
-  await page.goto('/', { waitUntil: 'networkidle' });
-  await snapshot(page, 'react');
+  await loadAndSnap(page, '/', 'react');
 });
