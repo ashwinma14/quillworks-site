@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 
 test.describe('Thesis section', () => {
   test('visual + a11y', async ({ page, browserName }) => {
-    await page.goto('http://localhost:3004/'); // adjust if base route differs
+    await page.goto('/'); // adjust if base route differs
     const thesis = page.locator('section', {
       hasText: 'Technology should adapt',
     });
