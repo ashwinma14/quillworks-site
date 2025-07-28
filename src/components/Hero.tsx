@@ -1,53 +1,51 @@
-import Image from 'next/image';
+import React from 'react';
 
-const Hero = () => {
+import { useReveal } from '../hooks/useReveal';
+
+const Hero: React.FC = () => {
+  const revealRef = useReveal<HTMLDivElement>();
   return (
-    <section className="flex min-h-screen items-center bg-surface-100">
-      <div className="container mx-auto px-4 py-16">
-        <div className="flex flex-col items-center gap-8 md:flex-row md:gap-12">
-          {/* Left Column - Text Content */}
-          <div className="flex-1 text-center md:w-3/5 md:text-left">
-            {/* Main Tagline */}
-            <h1
-              id="hero-heading"
-              className="my-8 font-serif text-[20px] font-bold leading-tight text-primary md:my-16 md:text-[30px]"
-            >
-              Let Digital <br />
-              Come to You
-            </h1>
+    <>
+      <section className="relative overflow-hidden bg-white before:pointer-events-none before:absolute before:inset-0 before:bg-[url('/images/noise.png')] before:opacity-5 before:mix-blend-multiply">
+        <div
+          style={{
+            background:
+              'radial-gradient(ellipse at center bottom, rgba(103,112,93,0.02) 0%, rgba(103,112,93,0) 70%)',
+          }}
+          className="pointer-events-none absolute inset-0"
+        />
 
-            {/* Subheading */}
-            <div className="font-body text-xs md:text-sm">
-              <span className="font-bold text-gray-900">
-                Technology should adapt to human rhythm
-              </span>
-              <br />
-              <span className="font-medium italic text-primary">
-                — not the other way around.
-              </span>
-            </div>
-          </div>
+        <div
+          ref={revealRef}
+          className="relative mx-auto max-w-[980px] px-[6vw] pt-12"
+          data-animate=""
+        >
+          <p className="mb-2 text-[14px] font-semibold uppercase tracking-[1.1px] text-primary/70">
+            LET DIGITAL COME TO YOU
+          </p>
 
-          {/* Right Column - Image */}
-          <div className="mx-auto w-full max-w-md flex-1 md:w-2/5">
-            <div className="relative aspect-square overflow-hidden rounded-lg">
-              {/* TODO: Replace with actual ripple image */}
-              <Image
-                src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
-                alt="Water ripples representing the gentle flow of technology adapting to human rhythm"
-                fill
-                className="object-cover object-center"
-                sizes="(max-width: 768px) 100vw, 40vw"
-                priority
-              />
+          <h1
+            className="mb-6 font-serif text-[clamp(48px,8vw,88px)] font-semibold
+                     leading-[1.1] -tracking-[0.5px] text-charcoal"
+          >
+            Technology should adapt to your rhythm — not the other way around.
+          </h1>
 
-              {/* Soft white overlay */}
-              <div className="absolute inset-0 z-10 bg-white/30"></div>
-            </div>
-          </div>
+          <a
+            href="#"
+            className="focus-visible:outline-offset-3 inline-flex items-center rounded-full px-8 py-4 text-lg font-medium text-white
+                    shadow-md transition-all duration-150
+                    hover:scale-[1.04] focus-visible:outline focus-visible:outline-2"
+            style={{ background: 'linear-gradient(#6F7563, #646B59)' }}
+          >
+            Join the waitlist
+          </a>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* SPACER */}
+      <div style={{ height: '120px' }}></div>
+    </>
   );
 };
 

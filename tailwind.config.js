@@ -15,7 +15,14 @@ module.exports = {
     },
     extend: {
       colors: {
-        primary: '#6F7563',
+        primary: '#67705D',
+        paper: '#FAFAF7',
+        charcoal: '#353535',
+        'text-primary': '#4A5139', // 4.7:1 contrast on paper background
+        'text-muted': '#4A5568', // 5.9:1 contrast on paper background
+        'bg-surface': '#F7F6F2',
+        accent: '#A4B6B8',
+        border: '#B5B9AA',
         surface: {
           100: '#F7F6F2',
         },
@@ -32,8 +39,10 @@ module.exports = {
         },
       },
       fontFamily: {
-        heading: ['"Merriweather"', 'serif'],
-        body: ['"Inter"', 'sans-serif'],
+        serif: ['var(--font-merri)'],
+        sans: ['var(--font-inter)'],
+        heading: ['Merriweather', 'serif'],
+        body: ['Inter', 'sans-serif'],
       },
       lineHeight: {
         hero: '4.5rem',

@@ -12,11 +12,13 @@
     "lint": "next lint",
     "format": "next lint --fix && prettier '**/*.{json,yaml}' --write --ignore-path .gitignore",
     "check-types": "tsc --noEmit --pretty",
+    "test:e2e": "playwright test --reporter=list,html",
     "log": "bash ./log.sh",
     "prepare": "husky install"
   },
   "dependencies": {
     "classnames": "^2.5.1",
+    "lucide-react": "^0.532.0",
     "next": "^14.1.0",
     "next-seo": "^6.4.0",
     "react": "^18.2.0",
@@ -25,6 +27,7 @@
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^14.1.0",
+    "@playwright/test": "^1.54.1",
     "@types/node": "^20.11.10",
     "@types/react": "^18.2.48",
     "@typescript-eslint/eslint-plugin": "^6.19.1",
