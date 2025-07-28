@@ -51,7 +51,10 @@ const StoryCards: React.FC = () => {
 
   return (
     <section ref={revealRef} className="bg-paper">
-      <div className="mx-auto flex max-w-[1200px] flex-wrap justify-center gap-8 px-[6vw] pb-24 pt-[96px]">
+      <div
+        data-testid="story-card-grid"
+        className="mx-auto flex max-w-[1200px] flex-wrap justify-center gap-8 px-[6vw] pb-24 pt-[96px]"
+      >
         {cards.map((card, index) => (
           <div
             key={index}

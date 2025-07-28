@@ -13,11 +13,12 @@ const FooterCopyright = () => (
     <style jsx>
       {`
         .footer-copyright :global(a) {
-          @apply text-primary;
+          @apply text-primary underline;
         }
 
         .footer-copyright :global(a:hover) {
-          @apply underline;
+          @apply text-primary underline;
+          text-decoration-thickness: 2px;
         }
       `}
     </style>

@@ -8,6 +8,14 @@
 
 Clone this project and use it to create your own [Next.js](https://nextjs.org) project. You can check a [Next js templates demo](https://creativedesignsguru.com/demo/nextjs-landing-page/).
 
+### Setup Images
+
+To fetch and convert the paper texture background for the Thesis section:
+
+```bash
+bash scripts/convert-paper.sh
+```
+
 ## Sponsors
 
 <table width="100%">

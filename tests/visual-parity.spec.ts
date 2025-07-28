@@ -10,7 +10,7 @@ async function snapshot(page: any, name: string) {
   await page.waitForTimeout(1000); // Allow time for scroll animations
   await expect(page).toHaveScreenshot(`${name}.png`, {
     fullPage: false,
-    timeout: 60000,
+    timeout: 15000,
   });
 }
 

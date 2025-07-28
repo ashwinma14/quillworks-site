@@ -14,6 +14,7 @@ const Sponsors = () => (
             <a
               href="https://clerk.com?utm_source=github&utm_medium=sponsorship&utm_campaign=nextjs-boilerplate"
               target="_blank"
+              aria-label="Clerk – Authentication & User Management for Next.js"
             >
               <Image
                 src="/assets/images/clerk-logo-dark.png"
@@ -27,6 +28,7 @@ const Sponsors = () => (
             <a
               href="https://www.coderabbit.ai?utm_source=next_js_starter&utm_medium=github&utm_campaign=next_js_starter_oss_2025"
               target="_blank"
+              aria-label="CodeRabbit"
             >
               <Image
                 src="/assets/images/coderabbit-logo-light.svg"
@@ -40,6 +42,7 @@ const Sponsors = () => (
             <a
               href="https://sentry.io/for/nextjs/?utm_source=github&utm_medium=paid-community&utm_campaign=general-fy25q1-nextjs&utm_content=github-banner-nextjsboilerplate-logo"
               target="_blank"
+              aria-label="Sentry"
             >
               <Image
                 src="/assets/images/sentry-dark.png"
@@ -52,7 +55,11 @@ const Sponsors = () => (
         </tr>
         <tr className="h-56">
           <td className="border-2 border-gray-300 p-3">
-            <a href="https://launch.arcjet.com/Q6eLbRE" target="_blank">
+            <a
+              href="https://launch.arcjet.com/Q6eLbRE"
+              target="_blank"
+              aria-label="Arcjet"
+            >
               <Image
                 src="/assets/images/arcjet-light.svg"
                 alt="Arcjet"
@@ -62,7 +69,11 @@ const Sponsors = () => (
             </a>
           </td>
           <td className="border-2 border-gray-300 p-3">
-            <a href="https://l.crowdin.com/next-js" target="_blank">
+            <a
+              href="https://l.crowdin.com/next-js"
+              target="_blank"
+              aria-label="Better Stack"
+            >
               <Image
                 src="/assets/images/crowdin-dark.png"
                 alt="Better Stack"
@@ -72,7 +83,10 @@ const Sponsors = () => (
             </a>
           </td>
           <td className="border-2 border-gray-300 p-3">
-            <a href="https://nextjs-boilerplate.com/pro-saas-starter-kit">
+            <a
+              href="https://nextjs-boilerplate.com/pro-saas-starter-kit"
+              aria-label="Next.js Boilerplate SaaS"
+            >
               <Image
                 src="/assets/images/nextjs-boilerplate-saas.png"
                 alt="Next.js Boilerplate SaaS"

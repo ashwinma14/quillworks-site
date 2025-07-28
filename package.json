@@ -26,6 +26,7 @@
     "styled-jsx-plugin-postcss": "^4.0.1"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.10.2",
     "@next/bundle-analyzer": "^14.1.0",
     "@playwright/test": "^1.54.1",
     "@types/node": "^20.11.10",
