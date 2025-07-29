@@ -7,9 +7,9 @@ export default defineConfig({
   use: { baseURL: 'http://localhost:3000' },
 
   webServer: {
-    command: 'npm run dev',
+    command: 'npm run start:test',
     port: 3000,
     reuseExistingServer: !process.env.CI,
-    timeout: 120 * 1000, // wait up to 2 min for Next.js
+    timeout: 180_000, // wait up to 3 min for Next.js production build
   },
 });
