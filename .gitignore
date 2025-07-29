@@ -58,3 +58,7 @@ dist/
 # Claude AI tooling (keep local only)
 .claude/
 CLAUDE_LOG.md
+
+# Git hook automation
+.tmp/
+*.log
