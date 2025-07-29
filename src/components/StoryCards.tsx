@@ -50,7 +50,7 @@ const StoryCards: React.FC = () => {
   ];
 
   return (
-    <section ref={revealRef} className="bg-paper">
+    <section ref={revealRef} className="-mt-40 bg-paper pb-32">
       <div
         data-testid="story-card-grid"
         className="mx-auto flex max-w-[1200px] flex-wrap justify-center gap-8 px-[6vw] pb-24 pt-[96px]"

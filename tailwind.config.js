@@ -1,5 +1,6 @@
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
+  safelist: ['bg-[url("/images/noise.png")]', '-mt-40', 'pb-32'],
   theme: {
     fontSize: {
       xs: '0.75rem',
