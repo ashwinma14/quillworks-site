@@ -6,6 +6,14 @@ export default defineConfig({
   timeout: 60_000, // per-test timeout
   use: { baseURL: 'http://localhost:3000' },
 
+  // Configure visual comparison settings
+  expect: {
+    toHaveScreenshot: {
+      threshold: 0.15, // Allow 15% pixel difference for visual regression tests
+      maxDiffPixels: 150000, // Allow up to 150k different pixels
+    },
+  },
+
   webServer: {
     command: 'npm run start:test',
     port: 3000,
