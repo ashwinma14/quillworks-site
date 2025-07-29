@@ -62,3 +62,6 @@ CLAUDE_LOG.md
 # Git hook automation
 .tmp/
 *.log
+
+*storybook.log
+storybook-static

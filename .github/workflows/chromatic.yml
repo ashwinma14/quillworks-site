@@ -1,0 +1,65 @@
+name: Chromatic
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+    branches: ['**']
+
+jobs:
+  chromatic:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Required for Chromatic baseline detection
+          
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Build Storybook
+        run: npm run build-storybook
+        
+      - name: Run Chromatic
+        uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          buildScriptName: build-storybook
+          exitZeroOnChanges: true
+          onlyChanged: true
+        env:
+          NODE_ENV: production
+          
+      - name: Detect baseline changes
+        if: always()
+        run: |
+          # Create temporary directory for tracking changes
+          mkdir -p .tmp
+          
+          # Check if Chromatic updated baselines
+          if [ -f "chromatic-changes.log" ]; then
+            echo "📸 Chromatic baseline changes detected:" | tee .tmp/chromatic-changes.patch
+            cat chromatic-changes.log | tee -a .tmp/chromatic-changes.patch
+            
+            # Log to terminal
+            echo "::notice title=Chromatic Baseline Update::Visual snapshots were updated. Check the patch file for details."
+          else
+            echo "✅ No baseline changes detected" | tee .tmp/chromatic-changes.patch
+          fi
+          
+      - name: Upload baseline changes
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: chromatic-changes
+          path: .tmp/chromatic-changes.patch
+          retention-days: 7

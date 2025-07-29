@@ -15,7 +15,10 @@
     "check-types": "tsc --noEmit --pretty",
     "test:e2e": "playwright test --reporter=list,html",
     "log": "bash ./log.sh",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "chromatic": "chromatic --exit-zero-on-changes"
   },
   "dependencies": {
     "classnames": "^2.5.1",
@@ -30,11 +33,18 @@
     "@axe-core/playwright": "^4.10.2",
     "@next/bundle-analyzer": "^14.1.0",
     "@playwright/test": "^1.54.1",
+    "@storybook/addon-a11y": "^9.0.18",
+    "@storybook/addon-docs": "^9.0.18",
+    "@storybook/addon-onboarding": "^9.0.18",
+    "@storybook/addon-viewport": "^9.0.8",
+    "@storybook/nextjs": "^9.0.18",
     "@types/node": "^20.11.10",
     "@types/react": "^18.2.48",
     "@typescript-eslint/eslint-plugin": "^6.19.1",
     "@typescript-eslint/parser": "^6.19.1",
     "autoprefixer": "^10.4.17",
+    "canvas": "^3.1.2",
+    "chromatic": "^13.1.2",
     "cross-env": "^7.0.3",
     "cssnano": "^6.0.3",
     "eslint": "^8.56.0",
@@ -48,6 +58,7 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",
+    "eslint-plugin-storybook": "^9.0.18",
     "eslint-plugin-tailwindcss": "^3.14.1",
     "eslint-plugin-unused-imports": "^3.0.0",
     "husky": "^8.0.3",
@@ -56,8 +67,14 @@
     "postcss": "^8.4.33",
     "prettier": "^3.2.4",
     "rimraf": "^5.0.5",
+    "storybook": "^9.0.18",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.3.3"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "eslintConfig": {
+    "extends": [
+      "plugin:storybook/recommended"
+    ]
+  }
 }

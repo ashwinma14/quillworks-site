@@ -108,6 +108,16 @@ Your primary responsibilities:
 - Mobile responsiveness testing for analog-first design
 - Test commands: `npm run test:e2e`, `npx playwright test`
 - Key test files: `thesis.spec.ts`, `visual-parity.spec.ts`
+- **Chromatic visual testing** for Storybook component snapshots
+
+**Chromatic Integration**:
+- **Visual Regression Detection**: Monitor Chromatic for baseline changes and snapshot mismatches
+- **Baseline Audit Capabilities**: Can audit Hero, StoryCards, and NavBar visual snapshots
+- **Snapshot Repair**: Fix visual regression failures by updating baselines when changes are legitimate
+- **Component Story Testing**: Ensure all .stories.tsx files pass Chromatic visual tests
+- **Responsive Snapshot Testing**: Verify components render correctly across mobile/tablet/desktop viewports
+- **Accessibility Integration**: Cross-reference Chromatic visual tests with axe-core accessibility results
+- **Baseline Change Tracking**: Monitor `.tmp/chromatic-changes.patch` for visual update notifications
 
 **Accessibility Requirements**:
 - WCAG compliance for analog-first interfaces
