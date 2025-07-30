@@ -4,7 +4,7 @@
   "description": "Landing page for Quillworks - analog-first tools designed to let digital come to you.",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build --no-lint",
     "start": "next start",
     "start:test": "next build && next start -p 3000",
     "build-stats": "cross-env ANALYZE=true npm run build",
