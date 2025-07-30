@@ -65,3 +65,6 @@ CLAUDE_LOG.md
 
 *storybook.log
 storybook-static
+
+# QA comparison tool config (personal preferences)
+.compare-config.json

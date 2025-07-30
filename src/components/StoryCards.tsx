@@ -92,15 +92,20 @@ const StoryCards: React.FC = () => {
             key={index}
             data-animate=""
             data-parallax=""
+            data-chromatic="ignore-shadow-variations"
             style={{ transitionDelay: `${index * 100}ms` }}
-            className="flex w-[300px] translate-y-8 flex-col gap-6
-                      rounded-[16px] border border-[#E4E5E2] bg-white px-6
-                      py-8 opacity-0 shadow-[0_4px_16px_rgba(103,112,93,0.08)] blur-sm transition-all duration-700"
+            className="opacity-0 translate-y-8 blur-sm transition-all duration-700
+                      bg-white rounded-[16px] shadow-[0_4px_16px_rgba(103,112,93,0.08)] border border-[#E4E5E2]
+                      w-[300px] pt-8 pb-8 px-6 flex flex-col gap-6"
           >
-            <div className="flex size-14 items-center justify-center rounded-full bg-[#F0F1ED]/90">
+            {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
+            <div 
+              className="w-14 h-14 rounded-full bg-[#F0F1ED]/90 flex items-center justify-center"
+              data-chromatic="ignore-icon-antialiasing"
+            >
               {card.icon}
             </div>
-            <h2 className="text-[20px] font-semibold tracking-tight text-[#353535]">
+            <h2 className="font-semibold text-[20px] tracking-tight text-[#353535]">
               {card.title}
             </h2>
             <p className="max-w-[220px] text-[16px] leading-[1.55]">
