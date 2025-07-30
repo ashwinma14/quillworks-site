@@ -9,7 +9,9 @@ Chromatic provides automated visual testing for our Storybook components, ensuri
 ## 🔧 Workflow Integration
 
 ### Automatic Testing
+
 Chromatic runs automatically on:
+
 - All pushes to any branch
 - All pull requests
 - Manual workflow dispatch
@@ -19,6 +21,7 @@ See `.github/workflows/chromatic.yml` for configuration details.
 ## 🎨 Baseline Alignment Strategy
 
 ### Typography-Level Changes
+
 After implementing pixel-perfect alignment with `/src/tmp/generated.html`, expect comprehensive visual diffs across all components due to:
 
 1. **Font Family Changes**: Merriweather → Instrument Serif
@@ -27,20 +30,22 @@ After implementing pixel-perfect alignment with `/src/tmp/generated.html`, expec
 4. **Layout Corrections**: Grid → Flexbox for StoryCards
 
 ### Expected Components with Diffs
+
 - ✅ **Hero**: Typography, font family, color corrections
-- ✅ **NavBar**: Font family, color corrections  
+- ✅ **NavBar**: Font family, color corrections
 - ✅ **StoryCards**: Layout, icon sizing, color corrections
 
 ## 🚨 Noise Suppression
 
 ### Data Attributes for Cross-Browser Consistency
+
 Components include Chromatic ignore attributes for known rendering variations:
 
 ```jsx
 // Hero heading - ignore font antialiasing differences
 <h1 data-chromatic="ignore-text-rendering">
 
-// StoryCard containers - ignore shadow rendering variations  
+// StoryCard containers - ignore shadow rendering variations
 <div data-chromatic="ignore-shadow-variations">
 
 // Icon containers - ignore SVG antialiasing differences
@@ -48,6 +53,7 @@ Components include Chromatic ignore attributes for known rendering variations:
 ```
 
 ### Why Noise Suppression?
+
 - **Font Antialiasing**: Varies across browsers and rendering engines
 - **Shadow Rendering**: Subtle differences in blur algorithms
 - **SVG Rendering**: Icon antialiasing inconsistencies
@@ -56,20 +62,25 @@ Components include Chromatic ignore attributes for known rendering variations:
 ## 📋 Review Process
 
 ### Pre-Typography Changes (Baseline)
+
 Before implementing Instrument Serif and exact color matching:
+
 - Hero used Merriweather serif font
 - Colors used Tailwind custom tokens
 - StoryCards used CSS Grid layout
 - Some icon containers used `size-14` utility
 
 ### Post-Typography Changes (Target State)
+
 After pixel-perfect alignment implementation:
+
 - Hero uses Instrument Serif with exact baseline kerning
 - All critical colors use exact hex values
 - StoryCards use Flexbox layout matching baseline
 - All icon containers use `w-14 h-14` for proper alignment
 
 ### Human Review Requirements
+
 ⚠️ **MANDATORY**: All typography-level changes require human review before snapshot acceptance because:
 
 1. **Design Intent**: Typography changes affect brand consistency
@@ -78,6 +89,7 @@ After pixel-perfect alignment implementation:
 4. **Pixel Precision**: Sub-pixel differences matter for brand fidelity
 
 ### Review Checklist
+
 - [ ] Hero typography matches Instrument Serif baseline exactly
 - [ ] NavBar branding uses correct font family
 - [ ] StoryCards layout uses flexbox (not grid)
@@ -88,32 +100,41 @@ After pixel-perfect alignment implementation:
 ## 🎯 Component-Specific Notes
 
 ### Hero Component
+
 **Expected Changes:**
+
 - Font family: Merriweather → Instrument Serif
 - Letter spacing: Combined `tracking-tight` + `-tracking-[0.5px]`
 - Color: `text-charcoal` → `text-[#353535]`
 
 **Review Focus:**
+
 - Kerning accuracy (especially in hero heading)
 - Font loading and fallback behavior
 - Focus state color accuracy
 
-### NavBar Component  
+### NavBar Component
+
 **Expected Changes:**
+
 - Brand font: Merriweather → Instrument Serif
 - Color precision for focus states
 
 **Review Focus:**
+
 - Brand text rendering consistency
 - Button focus ring color accuracy
 
 ### StoryCards Component
+
 **Expected Changes:**
+
 - Layout: CSS Grid → Flexbox
 - Icon containers: `size-14` → `w-14 h-14`
 - Color precision in headings
 
 **Review Focus:**
+
 - Card wrapping behavior (3 cards per row when space allows)
 - Icon centering within circular containers
 - Shadow rendering consistency
@@ -162,4 +183,4 @@ chromatic/
 
 ---
 
-*This documentation ensures consistent visual testing practices and proper review of typography-level changes.*
+_This documentation ensures consistent visual testing practices and proper review of typography-level changes._

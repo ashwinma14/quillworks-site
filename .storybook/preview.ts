@@ -18,7 +18,8 @@ const withQuillworksTheme = (Story) => {
       'div',
       { className: 'min-h-screen bg-paper relative' },
       React.createElement('div', {
-        className: 'fixed inset-0 bg-[url(\'/images/noise.png\')] opacity-[6%] pointer-events-none',
+        className:
+          "fixed inset-0 bg-[url('/images/noise.png')] opacity-[6%] pointer-events-none",
       }),
       React.createElement('style', {
         dangerouslySetInnerHTML: {
@@ -32,7 +33,11 @@ const withQuillworksTheme = (Story) => {
           `,
         },
       }),
-      React.createElement('div', { className: 'relative p-8' }, React.createElement(Story))
+      React.createElement(
+        'div',
+        { className: 'relative p-8' },
+        React.createElement(Story)
+      )
     )
   );
 };
@@ -113,7 +118,12 @@ const preview: Preview = {
     },
     options: {
       storySort: {
-        order: ['Documentation', ['Analog-First'], 'Components', ['Hero', 'StoryCards', 'NavBar']],
+        order: [
+          'Documentation',
+          ['Analog-First'],
+          'Components',
+          ['Hero', 'StoryCards', 'NavBar'],
+        ],
       },
     },
   },

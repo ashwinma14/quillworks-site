@@ -18,7 +18,7 @@ module.exports = {
     "font-['Instrument_Serif']",
     'tracking-[0.01em]',
     'tracking-[1.1px]',
-    '-tracking-[0.5px]'
+    '-tracking-[0.5px]',
   ],
   theme: {
     fontSize: {
@@ -36,7 +36,7 @@ module.exports = {
     extend: {
       colors: {
         primary: '#67705D', // Exact match to baseline
-        paper: '#FAFAF7',   // Exact match to baseline bg-[#FAFAF7]  
+        paper: '#FAFAF7', // Exact match to baseline bg-[#FAFAF7]
         charcoal: '#353535', // Exact match to baseline text-[#353535]
         'text-primary': '#4A5139', // 4.7:1 contrast on paper background
         'text-muted': '#4A5568', // 5.9:1 contrast on paper background
@@ -66,7 +66,7 @@ module.exports = {
         'instrument-serif': ['Instrument Serif', 'serif'], // Baseline font family
       },
       letterSpacing: {
-        'tightest': '-0.5px', // Custom tracking for baseline-specific values
+        tightest: '-0.5px', // Custom tracking for baseline-specific values
         'baseline-tight': '1.1px', // For uppercase text in baseline
       },
       lineHeight: {

@@ -4,6 +4,7 @@ module.exports = {
     const filteredFiles = files.filter((file) => !file.includes('.storybook/'));
     if (filteredFiles.length === 0) return [];
     return [
+      `prettier --write ${filteredFiles.join(' ')}`,
       `eslint --fix ${filteredFiles.join(' ')}`,
       `eslint ${filteredFiles.join(' ')}`,
     ];

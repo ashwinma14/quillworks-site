@@ -14,13 +14,13 @@ export const useReveal = <T extends HTMLElement>() => {
             entry.target.classList.add(
               'opacity-100',
               'translate-y-0',
-              'blur-0',
+              'blur-0'
             );
             observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.4 },
+      { threshold: 0.4 }
     );
 
     observer.observe(element);

@@ -34,8 +34,8 @@ const Hero: React.FC = () => {
             </p>
 
             <h1
-              className="font-['Instrument_Serif'] font-semibold text-[#353535] leading-[1.1]
-                       text-[clamp(48px,8vw,88px)] mb-6"
+              className="mb-6 font-['Instrument_Serif'] text-[clamp(48px,8vw,88px)] font-semibold
+                       leading-[1.1] text-[#353535]"
               style={{ letterSpacing: '-0.5px' }}
               data-chromatic="ignore-text-rendering"
             >
@@ -44,9 +44,9 @@ const Hero: React.FC = () => {
 
             <a
               href="#"
-              className="inline-flex items-center px-8 py-4 rounded-full text-white font-medium text-lg shadow-md
-                      transition-all duration-150 hover:scale-[1.04]
-                      focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#67705D] focus-visible:outline-offset-3"
+              className="focus-visible:outline-offset-3 inline-flex items-center rounded-full px-8 py-4 text-lg font-medium text-white
+                      shadow-md transition-all duration-150
+                      hover:scale-[1.04] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#67705D]"
               style={{ background: 'linear-gradient(#6F7563, #646B59)' }}
             >
               Join the waitlist

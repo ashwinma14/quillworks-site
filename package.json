@@ -19,7 +19,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "chromatic": "chromatic --exit-zero-on-changes",
-    "compare-baseline": "node scripts/compare-baseline.js"
+    "compare-baseline": "node tools/compare/compare-baseline.js"
   },
   "dependencies": {
     "classnames": "^2.5.1",
