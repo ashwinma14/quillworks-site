@@ -13,10 +13,38 @@ const StoryCards: React.FC = () => {
   const revealRef = useReveal<HTMLElement>();
 
   useEffect(() => {
-    const cards = document.querySelectorAll('[data-parallax]');
+    // Handle card animations
+    const cards = document.querySelectorAll('[data-animate]');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add(
+              'opacity-100',
+              'translate-y-0',
+              'blur-0',
+            );
+            entry.target.classList.remove(
+              'opacity-0',
+              'translate-y-8',
+              'blur-sm',
+            );
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '20px' },
+    );
+
+    cards.forEach((card) => {
+      observer.observe(card);
+    });
+
+    // Handle parallax scrolling
+    const parallaxCards = document.querySelectorAll('[data-parallax]');
     const handleScroll = () => {
       const y = window.scrollY;
-      cards.forEach((card) => {
+      parallaxCards.forEach((card) => {
         // eslint-disable-next-line no-param-reassign
         (card as HTMLElement).style.transform =
           `translateY(${Math.max(-15, -(y * 0.03))}px)`;
@@ -24,7 +52,11 @@ const StoryCards: React.FC = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      observer.disconnect();
+    };
   }, []);
 
   const cards: Card[] = [
@@ -50,7 +82,7 @@ const StoryCards: React.FC = () => {
   ];
 
   return (
-    <section ref={revealRef} className="-mt-40 bg-paper pb-32">
+    <section ref={revealRef} className="bg-paper">
       <div
         data-testid="story-card-grid"
         className="mx-auto flex max-w-[1200px] flex-wrap justify-center gap-8 px-[6vw] pb-24 pt-[96px]"
@@ -68,7 +100,7 @@ const StoryCards: React.FC = () => {
             <div className="flex size-14 items-center justify-center rounded-full bg-[#F0F1ED]/90">
               {card.icon}
             </div>
-            <h2 className="text-[20px] font-semibold tracking-tight text-charcoal">
+            <h2 className="text-[20px] font-semibold tracking-tight text-[#353535]">
               {card.title}
             </h2>
             <p className="max-w-[220px] text-[16px] leading-[1.55]">

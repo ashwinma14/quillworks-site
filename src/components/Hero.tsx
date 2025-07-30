@@ -7,8 +7,15 @@ const Hero: React.FC = () => {
   return (
     <>
       <section className="relative isolate">
-        <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-[6%]" />
-        <section className="relative overflow-hidden bg-white before:pointer-events-none before:absolute before:inset-0 before:bg-[url('/images/noise.png')] before:opacity-5 before:mix-blend-multiply">
+        <div
+          className="pointer-events-none absolute inset-0 mix-blend-multiply"
+          style={{
+            backgroundImage:
+              "url('https://grainy.s3.us-east-1.amazonaws.com/noise.png')",
+            opacity: 0.05,
+          }}
+        />
+        <section className="relative overflow-hidden bg-white">
           <div
             style={{
               background:

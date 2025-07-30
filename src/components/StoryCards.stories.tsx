@@ -1,4 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { Feather, Layers, Waves } from 'lucide-react';
+import React from 'react';
 
 import StoryCards from './StoryCards';
 
@@ -37,8 +39,66 @@ const meta: Meta<typeof StoryCards> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// Default story
+// Default story with immediate visibility for Storybook
 export const Default: Story = {
+  render: () => {
+    const cards = [
+      {
+        title: 'The Problem',
+        body: 'Digital tools pull us away from natural rhythms —\nreplacing flow with friction.',
+        icon: (
+          <Waves size={28} strokeWidth={1.5} className="stroke-primary/80" />
+        ),
+      },
+      {
+        title: 'Our Approach',
+        body: 'Let digital come to you —\nnot as noise, but as a quiet layer that tracks, shares,\nand preserves what already moves you.',
+        icon: (
+          <Layers size={28} strokeWidth={1.5} className="stroke-primary/80" />
+        ),
+      },
+      {
+        title: 'The Shift',
+        body: "We're entering a new era —\nwhere tools no longer demand attention,\nbut quietly earn their place.\nA world where technology whispers,\nand analog ways lead the way.",
+        icon: (
+          <Feather size={28} strokeWidth={1.5} className="stroke-primary/80" />
+        ),
+      },
+    ];
+
+    return (
+      <section className="-mt-40 bg-paper pb-32">
+        <div
+          data-testid="story-card-grid"
+          className="mx-auto grid max-w-[1200px] grid-cols-1 gap-8 px-[6vw] pb-24 pt-[96px] sm:grid-cols-2 md:grid-cols-3"
+        >
+          {cards.map((card, index) => (
+            <div
+              key={index}
+              className="flex max-w-[320px] flex-col gap-6
+                        justify-self-center rounded-[16px] border border-[#E4E5E2] bg-white
+                        px-6 py-8 shadow-[0_4px_16px_rgba(103,112,93,0.08)] transition-all duration-300 hover:shadow-[0_8px_24px_rgba(103,112,93,0.12)]"
+            >
+              <div className="flex size-14 items-center justify-center rounded-full bg-[#F0F1ED]/90">
+                {card.icon}
+              </div>
+              <h2 className="text-[20px] font-semibold tracking-tight text-charcoal">
+                {card.title}
+              </h2>
+              <p className="max-w-[220px] text-[16px] leading-[1.55]">
+                {card.body.split('\n').map((line, lineIndex) => (
+                  <React.Fragment key={lineIndex}>
+                    {line}
+                    {lineIndex < card.body.split('\n').length - 1 && <br />}
+                  </React.Fragment>
+                ))}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+    );
+  },
   parameters: {
     docs: {
       description: {
@@ -82,7 +142,7 @@ export const SingleCard: Story = {
     return (
       <section className="bg-paper py-16">
         <div className="mx-auto flex max-w-[1200px] justify-center px-[6vw]">
-          <div className="flex w-[300px] flex-col gap-6 rounded-[16px] border border-[#E4E5E2] bg-white px-6 py-8 shadow-[0_4px_16px_rgba(103,112,93,0.08)]">
+          <div className="flex max-w-[320px] flex-col gap-6 rounded-[16px] border border-[#E4E5E2] bg-white px-6 py-8 shadow-[0_4px_16px_rgba(103,112,93,0.08)]">
             <div className="flex size-14 items-center justify-center rounded-full bg-[#F0F1ED]/90">
               {card.icon}
             </div>
@@ -188,11 +248,11 @@ export const StaticGrid: Story = {
 
     return (
       <section className="bg-paper pb-32">
-        <div className="mx-auto flex max-w-[1200px] flex-wrap justify-center gap-8 px-[6vw] pb-24 pt-[96px]">
+        <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-8 px-[6vw] pb-24 pt-[96px] sm:grid-cols-2 md:grid-cols-3">
           {cards.map((card, index) => (
             <div
               key={index}
-              className="flex w-[300px] flex-col gap-6 rounded-[16px] border border-[#E4E5E2] bg-white px-6 py-8 shadow-[0_4px_16px_rgba(103,112,93,0.08)]"
+              className="flex max-w-[320px] flex-col gap-6 justify-self-center rounded-[16px] border border-[#E4E5E2] bg-white px-6 py-8 shadow-[0_4px_16px_rgba(103,112,93,0.08)]"
             >
               <div className="flex size-14 items-center justify-center rounded-full bg-[#F0F1ED]/90">
                 {card.icon}
@@ -219,6 +279,19 @@ export const StaticGrid: Story = {
       description: {
         story:
           'Story cards grid without parallax effects or animations, useful for static design review.',
+      },
+    },
+  },
+};
+
+// Original component with animations
+export const WithAnimations: Story = {
+  render: () => <StoryCards />,
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'The original StoryCards component with reveal animations and parallax effects.',
       },
     },
   },
