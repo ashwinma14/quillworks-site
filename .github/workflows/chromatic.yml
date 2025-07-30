@@ -34,8 +34,10 @@ jobs:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}
           buildScriptName: build-storybook
-          exitZeroOnChanges: true
+          exitZeroOnChanges: false
           onlyChanged: true
+          diffThreshold: 0.06
+          diffIncludeAntiAliasing: true
         env:
           NODE_ENV: production
 

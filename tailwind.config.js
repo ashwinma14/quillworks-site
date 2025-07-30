@@ -63,7 +63,9 @@ module.exports = {
         sans: ['var(--font-inter)'],
         heading: ['Merriweather', 'serif'],
         body: ['Inter', 'sans-serif'],
-        'instrument-serif': ['Instrument Serif', 'serif'], // Baseline font family
+        instrument: ['"Instrument Serif"', 'serif'], // Self-hosted primary serif
+        inter: ['Inter', 'sans-serif'], // Self-hosted primary sans-serif
+        'instrument-serif': ['Instrument Serif', 'serif'], // Baseline font family (legacy)
       },
       letterSpacing: {
         tightest: '-0.5px', // Custom tracking for baseline-specific values

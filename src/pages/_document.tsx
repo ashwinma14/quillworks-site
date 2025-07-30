@@ -9,29 +9,57 @@ class MyDocument extends Document {
     return (
       <Html lang={AppConfig.locale}>
         <Head>
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          {/* Self-hosted fonts with preload for performance */}
           <link
-            rel="preconnect"
-            href="https://fonts.gstatic.com"
+            rel="preload"
+            href="/fonts/instrument-serif-400-latin-6zUTjg.woff2"
+            as="font"
+            type="font/woff2"
             crossOrigin="anonymous"
           />
-          {/* Load fonts with display: swap for progressive rendering */}
           <link
-            rel="preconnect"
-            href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="preload"
+            href="/fonts/inter-400-latin-1ZL7.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
           />
           <link
-            href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap"
-            rel="stylesheet"
+            rel="preload"
+            href="/fonts/inter-500-latin-AZ9hiA.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
           />
-          {/* Keep Merriweather as fallback for existing serif usage */}
-          <link
-            rel="preconnect"
-            href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&display=swap"
-          />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&display=swap"
-            rel="stylesheet"
+          <style
+            dangerouslySetInnerHTML={{
+              __html: `
+                @font-face {
+                  font-family: 'Instrument Serif';
+                  font-style: normal;
+                  font-weight: 400;
+                  font-display: swap;
+                  src: url('/fonts/instrument-serif-400-latin-6zUTjg.woff2') format('woff2');
+                  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+                }
+                @font-face {
+                  font-family: 'Inter';
+                  font-style: normal;
+                  font-weight: 400;
+                  font-display: swap;
+                  src: url('/fonts/inter-400-latin-1ZL7.woff2') format('woff2');
+                  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+                }
+                @font-face {
+                  font-family: 'Inter';
+                  font-style: normal;
+                  font-weight: 500;
+                  font-display: swap;
+                  src: url('/fonts/inter-500-latin-AZ9hiA.woff2') format('woff2');
+                  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+                }
+              `,
+            }}
           />
           <script
             defer

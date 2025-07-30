@@ -44,6 +44,10 @@ pnpm-debug.log*
 dist/
 .eslintcache
 
+# Test artifacts
+test-results/
+playwright-report/
+
 # Environment & secrets (comprehensive)
 .env
 .env.*

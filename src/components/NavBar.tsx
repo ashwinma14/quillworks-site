@@ -6,7 +6,7 @@ const NavBar: React.FC = () => {
       className="mx-auto flex h-16 max-w-[1100px] items-center justify-between px-[6vw] shadow-[0_4px_40px_rgba(0,0,0,0.02)]"
       data-animate=""
     >
-      <span className="font-['Instrument_Serif'] text-[22px] font-bold tracking-[0.01em] text-[#353535]">
+      <span className="font-instrument text-[22px] font-bold tracking-[0.01em] text-[#353535]">
         Quillworks
       </span>
       <a
