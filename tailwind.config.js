@@ -14,8 +14,8 @@ module.exports = {
     'tracking-tight',
     'tracking-tightest',
     'tracking-baseline-tight',
-    'font-instrument-serif',
-    "font-['Instrument_Serif']",
+    'font-instrument',
+    'font-inter',
     'tracking-[0.01em]',
     'tracking-[1.1px]',
     '-tracking-[0.5px]',
@@ -59,13 +59,8 @@ module.exports = {
         },
       },
       fontFamily: {
-        serif: ['var(--font-merri)'],
-        sans: ['var(--font-inter)'],
-        heading: ['Merriweather', 'serif'],
-        body: ['Inter', 'sans-serif'],
-        instrument: ['"Instrument Serif"', 'serif'], // Self-hosted primary serif
-        inter: ['Inter', 'sans-serif'], // Self-hosted primary sans-serif
-        'instrument-serif': ['Instrument Serif', 'serif'], // Baseline font family (legacy)
+        instrument: ['"Instrument Serif"', 'Georgia', 'serif'],
+        inter: ['"Inter"', 'system-ui', 'sans-serif'],
       },
       letterSpacing: {
         tightest: '-0.5px', // Custom tracking for baseline-specific values

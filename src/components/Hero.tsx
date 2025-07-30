@@ -1,9 +1,38 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { useReveal } from '../hooks/useReveal';
 
 const Hero: React.FC = () => {
   const revealRef = useReveal<HTMLDivElement>();
+
+  // Dev-mode font validation
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'development') {
+      const checkFontLoading = () => {
+        const h1Element = document.querySelector('h1');
+        if (h1Element) {
+          const computedFont = getComputedStyle(h1Element).fontFamily;
+          if (
+            computedFont.includes('Times New Roman') ||
+            computedFont.includes('serif')
+          ) {
+            // eslint-disable-next-line no-console
+            console.warn(
+              '⚠️ Font fallback detected — Instrument Serif not loading properly'
+            );
+            // eslint-disable-next-line no-console
+            console.log('Current font-family:', computedFont);
+          } else if (computedFont.includes('Instrument Serif')) {
+            // eslint-disable-next-line no-console
+            console.log('✅ Instrument Serif loaded successfully');
+          }
+        }
+      };
+
+      // Check after fonts should be loaded
+      setTimeout(checkFontLoading, 2000);
+    }
+  }, []);
   return (
     <>
       <section className="relative isolate">

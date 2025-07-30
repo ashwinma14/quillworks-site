@@ -169,4 +169,62 @@ test.describe('Visual Parity Tests', () => {
 
     expect(navFontFamily).toContain('Instrument Serif');
   });
+
+  test('Font Loading Under Network Throttling', async ({ page }) => {
+    // Simulate slow network conditions to test CLS and font swap
+    await page.route('**/*.woff2', async (route) => {
+      // Add 2 second delay to font loading
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      await route.continue();
+    });
+
+    await page.goto('http://localhost:3001', { waitUntil: 'networkidle' });
+
+    // Capture screenshot during font loading phase
+    const loadingScreenshot = await page.screenshot({
+      fullPage: true,
+      animations: 'disabled',
+    });
+
+    // Wait for fonts to fully load
+    await page.evaluate(() => document.fonts.ready);
+    await page.waitForTimeout(1000);
+
+    // Capture final screenshot after font loading
+    const loadedScreenshot = await page.screenshot({
+      fullPage: true,
+      animations: 'disabled',
+    });
+
+    // Save debug screenshots
+    const screenshotDir = path.resolve('./test-results/visual-diffs');
+    if (!fs.existsSync(screenshotDir)) {
+      fs.mkdirSync(screenshotDir, { recursive: true });
+    }
+
+    fs.writeFileSync(
+      path.join(screenshotDir, 'throttled-loading.png'),
+      loadingScreenshot
+    );
+    fs.writeFileSync(
+      path.join(screenshotDir, 'throttled-loaded.png'),
+      loadedScreenshot
+    );
+
+    // Verify fonts eventually load correctly
+    const heroFontFamily = await page
+      .locator('h1')
+      .evaluate((el) => getComputedStyle(el).fontFamily);
+
+    expect(heroFontFamily).toContain('Instrument Serif');
+
+    // Test for minimal layout shift by comparing against expected
+    await expect(loadedScreenshot).toMatchSnapshot(
+      'throttled-final-expected.png',
+      {
+        threshold: PIXEL_DIFF_THRESHOLD,
+        maxDiffPixels: 2000, // Allow slightly more diff due to potential CLS
+      }
+    );
+  });
 });
