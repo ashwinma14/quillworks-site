@@ -34,8 +34,9 @@ const Hero: React.FC = () => {
             </p>
 
             <h1
-              className="font-['Instrument_Serif'] font-semibold tracking-tight text-[#353535] leading-[1.1]
-                       text-[clamp(48px,8vw,88px)] -tracking-[0.5px] mb-6"
+              className="font-['Instrument_Serif'] font-semibold text-[#353535] leading-[1.1]
+                       text-[clamp(48px,8vw,88px)] mb-6"
+              style={{ letterSpacing: '-0.5px' }}
               data-chromatic="ignore-text-rendering"
             >
               Technology should adapt to your rhythm — not the other way around.

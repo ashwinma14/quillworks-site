@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+/* eslint-disable no-console, no-plusplus, no-await-in-loop, no-promise-executor-return, no-use-before-define, radix */
+
 const fs = require('fs');
 const path = require('path');
 const { spawn } = require('child_process');
