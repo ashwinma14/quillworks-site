@@ -18,7 +18,14 @@ module.exports = {
     'font-inter',
     'tracking-[0.01em]',
     'tracking-[1.1px]',
-    '-tracking-[0.5px]',
+    'tracking-[-0.01em]',
+    'leading-tight',
+    'leading-relaxed',
+    'leading-[1.15]',
+    'max-w-[960px]',
+    'font-400',
+    'font-500',
+    'icon',
   ],
   theme: {
     fontSize: {
@@ -62,12 +69,22 @@ module.exports = {
         instrument: ['"Instrument Serif"', 'Georgia', 'serif'],
         inter: ['"Inter"', 'system-ui', 'sans-serif'],
       },
+      fontWeight: {
+        400: '400',
+        500: '500',
+        normal: '400',
+        medium: '500',
+        semibold: '600',
+      },
       letterSpacing: {
         tightest: '-0.5px', // Custom tracking for baseline-specific values
         'baseline-tight': '1.1px', // For uppercase text in baseline
+        tight: '-0.01em', // Refined tracking for headlines
       },
       lineHeight: {
         hero: '4.5rem',
+        tight: '1.15', // Precise line height for headlines
+        relaxed: '1.625', // Consistent baseline for body text
       },
     },
   },

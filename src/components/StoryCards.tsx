@@ -98,13 +98,13 @@ const StoryCards: React.FC = () => {
                       py-8 opacity-0 shadow-[0_4px_16px_rgba(103,112,93,0.08)] blur-sm transition-all duration-700"
           >
             {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
-            <div className="flex size-14 items-center justify-center rounded-full bg-[#F0F1ED]/90">
+            <div className="flex size-14 items-center justify-center rounded-full bg-[#F0F1ED]/90 icon">
               {card.icon}
             </div>
-            <h2 className="text-[20px] font-semibold tracking-tight text-[#353535]">
+            <h2 className="text-[20px] font-semibold leading-relaxed tracking-tight text-[#353535]">
               {card.title}
             </h2>
-            <p className="max-w-[220px] text-[16px] leading-[1.55]">
+            <p className="max-w-[220px] text-[14px] leading-relaxed text-[#353535]">
               {card.body.split('\n').map((line, lineIndex) => (
                 <React.Fragment key={lineIndex}>
                   {line}
