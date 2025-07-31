@@ -63,21 +63,17 @@ const StoryCards: React.FC = () => {
     {
       title: 'The Problem',
       body: 'Digital tools pull us away from natural rhythms —\nreplacing flow with friction.',
-      icon: <Waves size={28} strokeWidth={1.5} className="stroke-primary/80" />,
+      icon: <Waves className="size-7 text-gray-600" strokeWidth={1.5} />,
     },
     {
       title: 'Our Approach',
       body: 'Let digital come to you —\nnot as noise, but as a quiet layer that tracks, shares,\nand preserves what already moves you.',
-      icon: (
-        <Layers size={28} strokeWidth={1.5} className="stroke-primary/80" />
-      ),
+      icon: <Layers className="size-7 text-gray-600" strokeWidth={1.5} />,
     },
     {
       title: 'The Shift',
       body: "We're entering a new era —\nwhere tools no longer demand attention,\nbut quietly earn their place.\nA world where technology whispers,\nand analog ways lead the way.",
-      icon: (
-        <Feather size={28} strokeWidth={1.5} className="stroke-primary/80" />
-      ),
+      icon: <Feather className="size-7 text-gray-600" strokeWidth={1.5} />,
     },
   ];
 
@@ -97,8 +93,7 @@ const StoryCards: React.FC = () => {
                       rounded-[16px] border border-[#E4E5E2] bg-white px-6
                       py-8 opacity-0 shadow-[0_4px_16px_rgba(103,112,93,0.08)] blur-sm transition-all duration-700"
           >
-            {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
-            <div className="flex size-14 items-center justify-center rounded-full bg-[#F0F1ED]/90">
+            <div className="flex aspect-square size-14 items-center justify-center rounded-full bg-[#F0F1ED]/90">
               {card.icon}
             </div>
             <h2 className="text-[20px] font-semibold tracking-tight text-[#353535]">
