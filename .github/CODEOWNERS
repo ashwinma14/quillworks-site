@@ -1,0 +1,33 @@
+# CODEOWNERS for Quillworks
+# This file defines who reviews specific parts of the codebase
+# Uncomment and modify based on your team structure
+
+# Global owners - review all changes
+# * @ashwinma14
+
+# Frontend and components
+# /src/components/ @frontend-team
+# /src/styles/ @frontend-team
+# /src/hooks/ @frontend-team
+
+# Visual testing and integrity
+# /tests/ @qa-team
+# /snapshots/ @qa-team
+# /.github/workflows/visual-*.yml @qa-team
+# VISUAL_*.md @qa-team
+
+# Build and configuration
+# /.github/ @devops-team
+# /.husky/ @devops-team
+# /scripts/ @devops-team
+# package*.json @devops-team
+# tsconfig.json @devops-team
+# next.config.js @devops-team
+
+# Documentation
+# *.md @docs-team
+# /docs/ @docs-team
+
+# Claude Code configuration
+# /.claude/ @platform-team
+# claude.md @platform-team
