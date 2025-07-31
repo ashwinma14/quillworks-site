@@ -1,0 +1,94 @@
+import React, { useEffect } from 'react';
+
+import { useReveal } from '../hooks/useReveal';
+
+const Hero: React.FC = () => {
+  const revealRef = useReveal<HTMLDivElement>();
+
+  // Dev-mode font validation
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'development') {
+      const checkFontLoading = () => {
+        const h1Element = document.querySelector('h1');
+        if (h1Element) {
+          const computedFont = getComputedStyle(h1Element).fontFamily;
+          if (
+            computedFont.includes('Times New Roman') ||
+            computedFont.includes('serif')
+          ) {
+            // eslint-disable-next-line no-console
+            console.warn(
+              '⚠️ Font fallback detected — Instrument Serif not loading properly'
+            );
+            // eslint-disable-next-line no-console
+            console.log('Current font-family:', computedFont);
+          } else if (computedFont.includes('Instrument Serif')) {
+            // eslint-disable-next-line no-console
+            console.log('✅ Instrument Serif loaded successfully');
+          }
+        }
+      };
+
+      // Check after fonts should be loaded
+      setTimeout(checkFontLoading, 2000);
+    }
+  }, []);
+  return (
+    <>
+      <section className="relative isolate">
+        <div
+          className="pointer-events-none absolute inset-0 mix-blend-multiply"
+          style={{
+            backgroundImage:
+              "url('https://grainy.s3.us-east-1.amazonaws.com/noise.png')",
+            opacity: 0.05,
+          }}
+        />
+        <section className="relative overflow-hidden bg-white">
+          <div
+            style={{
+              background:
+                'radial-gradient(ellipse at center bottom, rgba(103,112,93,0.02) 0%, rgba(103,112,93,0) 70%)',
+            }}
+            className="pointer-events-none absolute inset-0"
+          />
+
+          <div
+            ref={revealRef}
+            className="relative mx-auto max-w-[980px] px-[6vw] pt-12"
+            data-animate=""
+          >
+            <p className="mb-2 text-[14px] font-semibold uppercase tracking-[1.1px] text-primary/70">
+              LET DIGITAL COME TO YOU
+            </p>
+
+            <div className="max-w-[960px]">
+              <h1
+                className="mb-6 font-instrument text-[clamp(48px,8vw,88px)] font-semibold 
+                         leading-[1.15] tracking-[-0.01em] text-[#353535]"
+              >
+                Technology should adapt to your rhythm — not the other way
+                around.
+              </h1>
+            </div>
+
+            <a
+              href="#"
+              className="focus-visible:outline-offset-3 inline-flex items-center rounded-full px-8 py-4 text-lg font-medium text-white
+                      shadow-md transition-all duration-150
+                      hover:scale-[1.04] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#67705D]"
+              style={{ background: 'linear-gradient(#6F7563, #646B59)' }}
+            >
+              Join the waitlist
+            </a>
+          </div>
+        </section>
+      </section>
+
+      {/* SPACER */}
+      <div style={{ height: '120px' }}></div>
+    </>
+  );
+};
+
+export default Hero;
