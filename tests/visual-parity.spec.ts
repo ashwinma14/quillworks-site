@@ -2,7 +2,14 @@ import { expect, test } from '@playwright/test';
 import path from 'path';
 import fs from 'fs';
 
-const PIXEL_DIFF_THRESHOLD = 0.2; // 0.2 threshold for Playwright's built-in comparison
+/**
+ * Snapshot created from visually-locked-2025-07-30
+ * Commit: 0246dc3
+ * Visual Diff Threshold: 0.03
+ * Rationale: Lock baseline before typography + icon work
+ */
+
+const PIXEL_DIFF_THRESHOLD = 0.03; // 0.03 threshold for stricter visual integrity
 
 const captureAndCompare = async (page: any, name: string) => {
   // Set viewport to 1440×900 @2× DPR as specified
@@ -28,7 +35,7 @@ const captureAndCompare = async (page: any, name: string) => {
   });
 
   // Navigate to React version
-  await page.goto('http://localhost:3001', { waitUntil: 'networkidle' });
+  await page.goto('http://localhost:3000', { waitUntil: 'networkidle' });
   await page.getByRole('heading', { level: 1 }).waitFor({ state: 'visible' });
   await page.waitForTimeout(2000); // Wait for fonts and animations
 
@@ -104,7 +111,7 @@ test.describe('Visual Parity Tests', () => {
       .screenshot({ animations: 'disabled' });
 
     // React hero screenshot
-    await page.goto('http://localhost:3001', { waitUntil: 'networkidle' });
+    await page.goto('http://localhost:3000', { waitUntil: 'networkidle' });
     await page.getByRole('heading', { level: 1 }).waitFor({ state: 'visible' });
     await page.waitForTimeout(2000);
 
@@ -136,7 +143,7 @@ test.describe('Visual Parity Tests', () => {
   });
 
   test('Font Loading Verification', async ({ page }) => {
-    await page.goto('http://localhost:3001', { waitUntil: 'networkidle' });
+    await page.goto('http://localhost:3000', { waitUntil: 'networkidle' });
 
     // Check that no external font requests are made
     const fontRequests: string[] = [];
@@ -178,7 +185,7 @@ test.describe('Visual Parity Tests', () => {
       await route.continue();
     });
 
-    await page.goto('http://localhost:3001', { waitUntil: 'networkidle' });
+    await page.goto('http://localhost:3000', { waitUntil: 'networkidle' });
 
     // Capture screenshot during font loading phase
     const loadingScreenshot = await page.screenshot({

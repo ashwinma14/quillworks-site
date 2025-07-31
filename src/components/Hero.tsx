@@ -55,7 +55,7 @@ const Hero: React.FC = () => {
 
           <div
             ref={revealRef}
-            className="relative mx-auto max-w-[980px] px-[6vw] pt-12"
+            className="relative mx-auto max-w-[960px] px-[6vw] pt-12 md:max-w-[860px] xl:max-w-[900px]"
             data-animate=""
           >
             <p className="mb-2 text-[14px] font-semibold uppercase tracking-[1.1px] text-primary/70">
@@ -64,8 +64,7 @@ const Hero: React.FC = () => {
 
             <h1
               className="mb-6 font-instrument text-[clamp(48px,8vw,88px)] font-semibold
-                       leading-[1.1] text-[#353535]"
-              style={{ letterSpacing: '-0.5px' }}
+                       leading-[1.2] tracking-tight text-[#353535]"
             >
               Technology should adapt to your rhythm — not the other way around.
             </h1>
