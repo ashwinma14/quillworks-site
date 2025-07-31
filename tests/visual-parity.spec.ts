@@ -137,8 +137,8 @@ test.describe('Visual Parity Tests', () => {
 
     // Compare hero sections with stricter threshold
     await expect(heroReact).toMatchSnapshot('hero-expected.png', {
-      threshold: PIXEL_DIFF_THRESHOLD * 0.5, // Even stricter for hero
-      maxDiffPixels: 500,
+      threshold: PIXEL_DIFF_THRESHOLD * 0.3, // Ultra-strict for hero (0.009%)
+      maxDiffPixels: 300,
     });
   });
 
