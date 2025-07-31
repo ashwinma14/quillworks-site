@@ -1,5 +1,20 @@
-import { Base } from '../templates/Base';
+import Head from 'next/head';
 
-const Index = () => <Base />;
+import Hero from '../components/Hero';
+import NavBar from '../components/NavBar';
+import StoryCards from '../components/StoryCards';
 
-export default Index;
+export default function Home() {
+  return (
+    <>
+      <Head>
+        <title>Quillworks – Let Digital Come to You</title>
+      </Head>
+      <NavBar />
+      <main id="main">
+        <Hero />
+        <StoryCards />
+      </main>
+    </>
+  );
+}

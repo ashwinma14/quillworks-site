@@ -44,6 +44,10 @@ pnpm-debug.log*
 dist/
 .eslintcache
 
+# Test artifacts
+test-results/
+playwright-report/
+
 # Environment & secrets (comprehensive)
 .env
 .env.*
@@ -58,3 +62,13 @@ dist/
 # Claude AI tooling (keep local only)
 .claude/
 CLAUDE_LOG.md
+
+# Git hook automation
+.tmp/
+*.log
+
+*storybook.log
+storybook-static
+
+# QA comparison tool config (personal preferences)
+.compare-config.json

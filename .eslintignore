@@ -1,2 +1,15 @@
 node_modules
 out
+.next
+tools/**
+scripts/**
+.storybook/**
+stories/**/*
+chromatic/**
+test-results/**
+.tmp/**
+.eslintcache
+playwright-report/**
+*.config.js
+*.config.ts
+tests/**/*

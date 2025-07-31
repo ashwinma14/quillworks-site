@@ -9,6 +9,14 @@ class MyDocument extends Document {
     return (
       <Html lang={AppConfig.locale}>
         <Head>
+          {/* Critical font preload for above-the-fold Hero section */}
+          <link
+            rel="preload"
+            href="/fonts/instrument-serif-400-latin-6zUTjg.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
           <script
             defer
             data-domain="quillworks-site.vercel.app"

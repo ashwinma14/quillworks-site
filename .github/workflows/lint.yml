@@ -1,0 +1,46 @@
+name: Lint & Types
+
+on: 
+  push:
+    branches: [main, develop, 'feature/**']
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    name: ESLint & TypeScript
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Cache ESLint
+        uses: actions/cache@v3
+        with:
+          path: .eslintcache
+          key: ${{ runner.os }}-eslint-${{ hashFiles('**/package-lock.json', '.eslintrc.js', '.eslintignore') }}
+          restore-keys: |
+            ${{ runner.os }}-eslint-
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run ESLint
+        run: npm run lint
+
+      - name: Check TypeScript types
+        run: npm run check-types
+
+      - name: Upload ESLint cache
+        if: always()
+        uses: actions/cache/save@v3
+        with:
+          path: .eslintcache
+          key: ${{ runner.os }}-eslint-${{ hashFiles('**/package-lock.json', '.eslintrc.js', '.eslintignore') }}-${{ github.sha }}
