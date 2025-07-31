@@ -71,9 +71,9 @@ const Hero: React.FC = () => {
 
             <a
               href="#"
-              className="focus-visible:outline-offset-3 inline-flex items-center rounded-full px-8 py-4 text-lg font-medium text-white
+              className="focus-visible:outline-offset-3 inline-flex min-h-[44px] items-center rounded-full px-8 py-4 text-lg font-medium text-white
                       shadow-md transition-all duration-150
-                      hover:scale-[1.04] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#67705D]"
+                      hover:scale-[1.04] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#67705D] sm:min-h-[48px]"
               style={{ background: 'linear-gradient(#6F7563, #646B59)' }}
             >
               Join the waitlist

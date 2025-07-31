@@ -39,3 +39,26 @@
   text-rendering: auto;
   font-feature-settings: 'liga';
 }
+
+/* Mobile typography optimizations for better rendering */
+@media (max-width: 768px) {
+  body {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Prevent font size adjustments on mobile browsers */
+  html {
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+}
+
+/* Ensure minimum touch target sizes for accessibility */
+.btn, button, a[role="button"] {
+  min-height: 44px;
+  min-width: 44px;
+}
