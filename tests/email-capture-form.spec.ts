@@ -47,7 +47,12 @@ test.describe('Email Capture Form', () => {
     await page.click('button:has-text("Stay in the Loop")');
 
     // Verify success message
-    await expect(page.getByText(/check your inbox/i)).toBeVisible();
+    await expect(
+      page.getByText(/thanks for joining the journey/i)
+    ).toBeVisible();
+
+    // Verify form reset
+    await expect(page.locator('input[type="email"]')).toHaveValue('');
   });
 
   test('should show error on failed submission', async ({ page }) => {

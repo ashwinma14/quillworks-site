@@ -42,18 +42,24 @@ const EmailCaptureForm: React.FC = () => {
         className="w-full max-w-xs rounded-md border border-gray-300 px-4 py-2 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#67705D] sm:w-auto"
       />
 
-      <button
-        type="submit"
-        className="rounded-md bg-[#67705D] px-4 py-2 text-sm text-white transition hover:bg-[#55614F]"
-      >
-        Stay in the Loop
-      </button>
+      <div className="flex items-center gap-2">
+        <button
+          type="submit"
+          className="rounded-md bg-[#67705D] px-4 py-2 text-sm text-white transition hover:bg-[#55614F]"
+        >
+          Stay in the Loop
+        </button>
 
-      {status === 'success' && (
-        <span className="ml-2 text-sm text-[#67705D]" aria-live="polite">
-          ✓ Check your inbox!
-        </span>
-      )}
+        {status === 'success' && (
+          <span
+            className="text-sm text-[#67705D]"
+            aria-live="polite"
+            role="status"
+          >
+            ✓ Thanks for joining the journey!
+          </span>
+        )}
+      </div>
       {status === 'error' && (
         <span className="ml-2 text-sm text-red-600" aria-live="polite">
           Something went wrong.
