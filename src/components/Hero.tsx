@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { useReveal } from '../hooks/useReveal';
+import SubstackEmbed from './SubstackEmbed';
 
 const Hero: React.FC = () => {
   const revealRef = useReveal<HTMLDivElement>();
@@ -70,15 +71,7 @@ const Hero: React.FC = () => {
               Technology should adapt to your rhythm — not the other way around.
             </h1>
 
-            <a
-              href="#"
-              className="focus-visible:outline-offset-3 inline-flex items-center rounded-full px-8 py-4 text-lg font-medium text-white
-                      shadow-md transition-all duration-150
-                      hover:scale-[1.04] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#67705D]"
-              style={{ background: 'linear-gradient(#6F7563, #646B59)' }}
-            >
-              Join the waitlist
-            </a>
+            <SubstackEmbed />
           </div>
         </section>
       </section>

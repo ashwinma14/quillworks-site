@@ -28,7 +28,7 @@ const captureAndCompare = async (page: any, name: string) => {
   });
 
   // Navigate to React version
-  await page.goto('http://localhost:3001', { waitUntil: 'networkidle' });
+  await page.goto('http://localhost:3000', { waitUntil: 'networkidle' });
   await page.getByRole('heading', { level: 1 }).waitFor({ state: 'visible' });
   await page.waitForTimeout(2000); // Wait for fonts and animations
 
@@ -104,7 +104,7 @@ test.describe('Visual Parity Tests', () => {
       .screenshot({ animations: 'disabled' });
 
     // React hero screenshot
-    await page.goto('http://localhost:3001', { waitUntil: 'networkidle' });
+    await page.goto('http://localhost:3000', { waitUntil: 'networkidle' });
     await page.getByRole('heading', { level: 1 }).waitFor({ state: 'visible' });
     await page.waitForTimeout(2000);
 
@@ -136,7 +136,7 @@ test.describe('Visual Parity Tests', () => {
   });
 
   test('Font Loading Verification', async ({ page }) => {
-    await page.goto('http://localhost:3001', { waitUntil: 'networkidle' });
+    await page.goto('http://localhost:3000', { waitUntil: 'networkidle' });
 
     // Check that no external font requests are made
     const fontRequests: string[] = [];
@@ -178,7 +178,7 @@ test.describe('Visual Parity Tests', () => {
       await route.continue();
     });
 
-    await page.goto('http://localhost:3001', { waitUntil: 'networkidle' });
+    await page.goto('http://localhost:3000', { waitUntil: 'networkidle' });
 
     // Capture screenshot during font loading phase
     const loadingScreenshot = await page.screenshot({

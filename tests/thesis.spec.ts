@@ -16,6 +16,7 @@ test.describe('Thesis section', () => {
         'landmark-one-main',
         'scrollable-region-focusable',
       ])
+      .exclude('iframe') // Exclude third-party Substack iframe from accessibility testing
       .analyze();
     expect(results.violations).toEqual([]);
   });
