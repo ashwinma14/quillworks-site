@@ -19,7 +19,7 @@ const Hero: React.FC = () => {
           ) {
             // eslint-disable-next-line no-console
             console.warn(
-              '⚠️ Font fallback detected — Instrument Serif not loading properly'
+              '⚠️ Font fallback detected - Instrument Serif not loading properly'
             );
             // eslint-disable-next-line no-console
             console.log('Current font-family:', computedFont);
@@ -68,7 +68,7 @@ const Hero: React.FC = () => {
                        leading-[1.1] text-[#353535]"
               style={{ letterSpacing: '-0.5px' }}
             >
-              Technology should adapt to your rhythm — not the other way around.
+              Technology should adapt to your rhythm - not the other way around.
             </h1>
 
             <SubstackForm />

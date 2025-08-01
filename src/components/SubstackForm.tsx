@@ -5,7 +5,7 @@ export default function SubstackForm() {
       method="POST"
       target="_blank"
       aria-label="Subscribe to Quillworks"
-      className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
+      className="mt-4 flex flex-col items-start justify-start gap-3 sm:mt-6 sm:flex-row"
     >
       <input
         type="email"
@@ -19,7 +19,7 @@ export default function SubstackForm() {
         type="submit"
         className="rounded-md bg-[#67705D] px-4 py-2 text-sm text-white transition hover:bg-[#55614F]"
       >
-        Subscribe
+        Stay in the Loop
       </button>
     </form>
   );

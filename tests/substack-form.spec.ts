@@ -29,11 +29,13 @@ test.describe('Substack Form', () => {
     // Check submit button
     const submitButton = form.locator('button[type="submit"]');
     await expect(submitButton).toBeVisible();
-    await expect(submitButton).toHaveText('Subscribe');
+    await expect(
+      page.getByRole('button', { name: /stay in the loop/i })
+    ).toBeVisible();
 
     // Check form styling
     await expect(form).toHaveClass(
-      /mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row/
+      /mt-4 flex flex-col items-start justify-start gap-3 sm:mt-6 sm:flex-row/
     );
   });
 

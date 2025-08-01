@@ -70,7 +70,7 @@ export const WithoutSpacer: Story = {
           </p>
 
           <h1 className="mb-6 font-serif text-[clamp(48px,8vw,88px)] font-semibold leading-[1.1] tracking-[-0.5px] text-charcoal">
-            Technology should adapt to your rhythm — not the other way around.
+            Technology should adapt to your rhythm - not the other way around.
           </h1>
 
           <a
