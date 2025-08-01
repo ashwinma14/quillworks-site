@@ -56,7 +56,7 @@ const Hero: React.FC = () => {
 
           <div
             ref={revealRef}
-            className="relative mx-auto max-w-[980px] px-[6vw] pt-12"
+            className="relative mx-auto max-w-[980px] px-[6vw] py-12 sm:pb-16"
             data-animate=""
           >
             <p className="mb-2 text-[14px] font-semibold uppercase tracking-[1.1px] text-primary/70">
@@ -75,9 +75,6 @@ const Hero: React.FC = () => {
           </div>
         </section>
       </section>
-
-      {/* SPACER */}
-      <div style={{ height: '120px' }}></div>
     </>
   );
 };
