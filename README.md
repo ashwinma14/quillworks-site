@@ -159,18 +159,6 @@ npm run dev
 
 Open http://localhost:3000 with your favorite browser to see your project. For your information, Next JS need to take some time to compile the project for your first time.
 
-### Environment Variables
-
-The project supports the following optional environment variables:
-
-```bash
-# Substack embed URL for newsletter signup (optional)
-# Defaults to: https://quillworks.substack.com/embed
-NEXT_PUBLIC_SUBSTACK_EMBED=https://quillworks.substack.com/embed
-```
-
-To use a custom Substack embed URL, create a `.env.local` file in the root directory and add the variable above.
-
 ```
 .
 ├── README.md            # README file
