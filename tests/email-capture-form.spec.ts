@@ -1,22 +1,14 @@
 import { expect, test } from '@playwright/test';
 
-test.describe('Substack Form', () => {
+test.describe('Email Capture Form', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
   });
 
-  test('should display Substack subscription form', async ({ page }) => {
+  test('should display email capture form', async ({ page }) => {
     // Wait for the form to be present
-    const form = page.locator('form[aria-label="Subscribe to Quillworks"]');
+    const form = page.locator('form').filter({ hasText: 'Stay in the Loop' });
     await expect(form).toBeVisible({ timeout: 10000 });
-
-    // Verify form attributes
-    await expect(form).toHaveAttribute(
-      'action',
-      'https://quillworks.substack.com/subscribe'
-    );
-    await expect(form).toHaveAttribute('method', 'POST');
-    await expect(form).toHaveAttribute('target', '_blank');
 
     // Check email input
     const emailInput = form.locator('input[type="email"]');
@@ -39,11 +31,44 @@ test.describe('Substack Form', () => {
     );
   });
 
+  test('should have hidden honeypot field', async ({ page }) => {
+    const honeypot = page.locator('input[name="_gotcha"]');
+    await expect(honeypot).toBeHidden();
+  });
+
+  test('should submit form successfully', async ({ page }) => {
+    // Mock Formspree API
+    await page.route('https://formspree.io/f/mvgqbovv', (route) =>
+      route.fulfill({ status: 200, body: '{}' })
+    );
+
+    // Fill and submit
+    await page.fill('input[type="email"]', 'test@example.com');
+    await page.click('button:has-text("Stay in the Loop")');
+
+    // Verify success message
+    await expect(page.getByText(/check your inbox/i)).toBeVisible();
+  });
+
+  test('should show error on failed submission', async ({ page }) => {
+    // Mock Formspree API failure
+    await page.route('https://formspree.io/f/mvgqbovv', (route) =>
+      route.fulfill({ status: 500, body: '{}' })
+    );
+
+    // Fill and submit
+    await page.fill('input[type="email"]', 'test@example.com');
+    await page.click('button:has-text("Stay in the Loop")');
+
+    // Verify error message
+    await expect(page.getByText(/something went wrong/i)).toBeVisible();
+  });
+
   test('should be responsive on mobile', async ({ page }) => {
     // Set mobile viewport
     await page.setViewportSize({ width: 375, height: 667 });
 
-    const form = page.locator('form[aria-label="Subscribe to Quillworks"]');
+    const form = page.locator('form').filter({ hasText: 'Stay in the Loop' });
     await expect(form).toBeVisible();
 
     // Check that form elements stack vertically on mobile
@@ -58,7 +83,7 @@ test.describe('Substack Form', () => {
   });
 
   test('should have proper keyboard navigation', async ({ page }) => {
-    const form = page.locator('form[aria-label="Subscribe to Quillworks"]');
+    const form = page.locator('form').filter({ hasText: 'Stay in the Loop' });
     const emailInput = form.locator('input[type="email"]');
     const submitButton = form.locator('button[type="submit"]');
 

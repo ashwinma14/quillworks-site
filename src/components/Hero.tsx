@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { useReveal } from '../hooks/useReveal';
-import SubstackForm from './SubstackForm';
+import EmailCaptureForm from './EmailCaptureForm';
 
 const Hero: React.FC = () => {
   const revealRef = useReveal<HTMLDivElement>();
@@ -71,7 +71,7 @@ const Hero: React.FC = () => {
               Technology should adapt to your rhythm - not the other way around.
             </h1>
 
-            <SubstackForm />
+            <EmailCaptureForm />
           </div>
         </section>
       </section>
