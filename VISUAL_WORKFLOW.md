@@ -50,7 +50,7 @@ snapshots/
 ### 1. Before Making Visual Changes
 ```bash
 # Always backup current snapshots
-npm run snapshots backup
+npm run snapshots        # backup current snapshots
 
 # Verify current state
 npm run test:visual:quick
@@ -78,7 +78,7 @@ npx playwright test tests/visual-integrity.spec.ts --update-snapshots
 On major milestones:
 ```bash
 # Create dated archive
-npm run snapshots backup
+npm run snapshots        # backup current snapshots
 
 # Archive will be created at:
 # snapshots/archive/YYYY-MM-DD/
@@ -154,7 +154,7 @@ Include:
 Before any deployment:
 
 - [ ] All visual tests passing (`npm run test:visual:all`)
-- [ ] Snapshots backed up (`npm run snapshots backup`)
+- [ ] Snapshots backed up (`npm run snapshots        # backup current snapshots`)
 - [ ] Changes documented in commit/PR
 - [ ] Production tag created (`prod-visual-lock-YYYY-MM-DD`)
 - [ ] Archive created for milestone releases
