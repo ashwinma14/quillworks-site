@@ -64,8 +64,8 @@ const Hero: React.FC = () => {
             </p>
 
             <h1
-              className="mb-6 font-instrument text-[clamp(48px,8vw,88px)] font-semibold
-                       leading-[1.1] text-[#353535]"
+              className="mb-8 font-instrument text-[clamp(48px,8vw,88px)] font-semibold leading-[1.1] text-[#353535]
+                       sm:mb-10 lg:mb-12"
               style={{ letterSpacing: '-0.5px' }}
             >
               Technology should adapt to your rhythm - not the other way around.
