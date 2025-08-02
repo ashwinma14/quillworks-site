@@ -10,7 +10,7 @@ const meta: Meta<typeof NavBar> = {
     docs: {
       description: {
         component:
-          'The main navigation header for Quillworks featuring the brand name and call-to-action button. Clean, minimal design with Quillworks typography and color scheme.',
+          'The main navigation header for Quillworks featuring the brand name. Clean, minimal design with Quillworks typography and color scheme.',
       },
     },
     a11y: {
@@ -46,8 +46,7 @@ export const Default: Story = {
   parameters: {
     docs: {
       description: {
-        story:
-          'The default navigation bar with Quillworks branding and join waitlist button.',
+        story: 'The default navigation bar with Quillworks branding.',
       },
     },
   },
@@ -116,28 +115,18 @@ export const Mobile: Story = {
 export const WithFocusState: Story = {
   render: () => (
     <header
-      className="mx-auto flex h-16 max-w-[1100px] items-center justify-between px-[6vw] shadow-[0_4px_40px_rgba(0,0,0,0.02)]"
+      className="mx-auto flex h-16 max-w-[1100px] items-center justify-start px-[6vw] shadow-[0_4px_40px_rgba(0,0,0,0.02)]"
       data-animate=""
     >
       <span className="font-serif text-[22px] font-bold tracking-[0.01em] text-charcoal">
         Quillworks
       </span>
-      <a
-        href="#"
-        className="inline-flex items-center rounded-full border border-primary px-5 py-2 text-[14px] font-semibold text-primary
-                transition-colors hover:bg-[#F7F8F6] focus:outline focus:outline-2 focus:outline-offset-4 focus:outline-primary
-                focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
-        autoFocus
-      >
-        Join waitlist
-      </a>
     </header>
   ),
   parameters: {
     docs: {
       description: {
-        story:
-          'Navigation bar with the button in focus state to demonstrate accessibility styling.',
+        story: 'Navigation bar demonstrating the clean layout and typography.',
       },
     },
   },
@@ -147,26 +136,18 @@ export const WithFocusState: Story = {
 export const WithHoverState: Story = {
   render: () => (
     <header
-      className="mx-auto flex h-16 max-w-[1100px] items-center justify-between px-[6vw] shadow-[0_4px_40px_rgba(0,0,0,0.02)]"
+      className="mx-auto flex h-16 max-w-[1100px] items-center justify-start px-[6vw] shadow-[0_4px_40px_rgba(0,0,0,0.02)]"
       data-animate=""
     >
       <span className="font-serif text-[22px] font-bold tracking-[0.01em] text-charcoal">
         Quillworks
       </span>
-      <a
-        href="#"
-        className="inline-flex items-center rounded-full border border-primary bg-[#F7F8F6] px-5 py-2 text-[14px] font-semibold
-                text-primary transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
-      >
-        Join waitlist
-      </a>
     </header>
   ),
   parameters: {
     docs: {
       description: {
-        story:
-          'Navigation bar with the button in simulated hover state showing the background color change.',
+        story: 'Navigation bar with minimal, clean styling.',
       },
     },
   },
@@ -191,7 +172,7 @@ export const DesktopWide: Story = {
 export const AlternativeBrandName: Story = {
   render: () => (
     <header
-      className="mx-auto flex h-16 max-w-[1100px] items-center justify-between px-[6vw] shadow-[0_4px_40px_rgba(0,0,0,0.02)]"
+      className="mx-auto flex h-16 max-w-[1100px] items-center justify-start px-[6vw] shadow-[0_4px_40px_rgba(0,0,0,0.02)]"
       data-animate=""
     >
       <span className="font-serif text-[22px] font-bold tracking-[0.01em] text-charcoal">

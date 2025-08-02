@@ -62,19 +62,19 @@ const StoryCards: React.FC = () => {
   const cards: Card[] = [
     {
       title: 'The Problem',
-      body: 'Digital tools pull us away from natural rhythms —\nreplacing flow with friction.',
+      body: 'Digital tools pull us away from natural rhythms -\nreplacing flow with friction.',
       icon: <Waves size={28} strokeWidth={1.5} className="stroke-primary/80" />,
     },
     {
       title: 'Our Approach',
-      body: 'Let digital come to you —\nnot as noise, but as a quiet layer that tracks, shares,\nand preserves what already moves you.',
+      body: 'Let digital come to you -\nnot as noise, but as a quiet layer that tracks, shares,\nand preserves what already moves you.',
       icon: (
         <Layers size={28} strokeWidth={1.5} className="stroke-primary/80" />
       ),
     },
     {
       title: 'The Shift',
-      body: "We're entering a new era —\nwhere tools no longer demand attention,\nbut quietly earn their place.\nA world where technology whispers,\nand analog ways lead the way.",
+      body: "We're entering a new era -\nwhere tools no longer demand attention,\nbut quietly earn their place.\nA world where technology whispers,\nand analog ways lead the way.",
       icon: (
         <Feather size={28} strokeWidth={1.5} className="stroke-primary/80" />
       ),
@@ -85,7 +85,7 @@ const StoryCards: React.FC = () => {
     <section ref={revealRef} className="bg-paper">
       <div
         data-testid="story-card-grid"
-        className="mx-auto flex max-w-[1200px] flex-wrap justify-center gap-8 px-[6vw] pb-24 pt-[96px]"
+        className="mx-auto flex max-w-[1200px] flex-wrap justify-center gap-8 px-[6vw] pb-24 pt-12 sm:pt-16"
       >
         {cards.map((card, index) => (
           <div

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { useReveal } from '../hooks/useReveal';
+import EmailCaptureForm from './EmailCaptureForm';
 
 const Hero: React.FC = () => {
   const revealRef = useReveal<HTMLDivElement>();
@@ -18,7 +19,7 @@ const Hero: React.FC = () => {
           ) {
             // eslint-disable-next-line no-console
             console.warn(
-              '⚠️ Font fallback detected — Instrument Serif not loading properly'
+              '⚠️ Font fallback detected - Instrument Serif not loading properly'
             );
             // eslint-disable-next-line no-console
             console.log('Current font-family:', computedFont);
@@ -55,7 +56,7 @@ const Hero: React.FC = () => {
 
           <div
             ref={revealRef}
-            className="relative mx-auto max-w-[980px] px-[6vw] pt-12"
+            className="relative mx-auto max-w-[980px] px-[6vw] py-12 sm:pb-16"
             data-animate=""
           >
             <p className="mb-2 text-[14px] font-semibold uppercase tracking-[1.1px] text-primary/70">
@@ -67,24 +68,13 @@ const Hero: React.FC = () => {
                        leading-[1.1] text-[#353535]"
               style={{ letterSpacing: '-0.5px' }}
             >
-              Technology should adapt to your rhythm — not the other way around.
+              Technology should adapt to your rhythm - not the other way around.
             </h1>
 
-            <a
-              href="#"
-              className="focus-visible:outline-offset-3 inline-flex items-center rounded-full px-8 py-4 text-lg font-medium text-white
-                      shadow-md transition-all duration-150
-                      hover:scale-[1.04] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#67705D]"
-              style={{ background: 'linear-gradient(#6F7563, #646B59)' }}
-            >
-              Join the waitlist
-            </a>
+            <EmailCaptureForm />
           </div>
         </section>
       </section>
-
-      {/* SPACER */}
-      <div style={{ height: '120px' }}></div>
     </>
   );
 };
