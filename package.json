@@ -21,7 +21,8 @@
     "build-storybook": "storybook build",
     "chromatic": "chromatic --exit-zero-on-changes",
     "compare-baseline": "node --experimental-modules tools/compare/compare-baseline.mjs",
-    "snapshots": "node ./scripts/snapshots.js"
+    "snapshots": "node ./scripts/snapshots.js",
+    "snapshots:restore": "node ./scripts/restoreSnapshots.js"
   },
   "engines": {
     "node": ">=20.x"

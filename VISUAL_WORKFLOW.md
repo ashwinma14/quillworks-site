@@ -97,10 +97,10 @@ npm run snapshots        # backup current snapshots
 ### Visual Rollback
 ```bash
 # List available backups
-npm run snapshots list
+ls -la snapshots/archive/
 
 # Restore specific backup
-npm run snapshots restore snapshots-2025-07-30
+npm run snapshots:restore 2025-07-30
 
 # Verify restoration
 npm run test:visual:all
@@ -123,6 +123,11 @@ npm run test:visual:all
 2. Find last known good deployment
 3. Click "Redeploy" or "Promote to Production"
 4. Tag the rollback for reference
+
+## 📝 Documentation Requirements
+
+### Release Notes
+For the latest release information, see [Release notes](https://github.com/ashwinma14/quillworks-site/releases/tag/prod-visual-lock-2025-08-02l).
 
 ## 📝 Documentation Requirements
 
@@ -168,7 +173,7 @@ Before any deployment:
 4. If regression: Rollback changes
 
 ### Snapshot Corruption
-1. Restore from backup: `npm run snapshots restore`
+1. Restore from backup: `npm run snapshots:restore YYYY-MM-DD`
 2. If no backup: Checkout from last tag
 3. Regenerate snapshots
 4. Create new backup immediately
@@ -183,8 +188,8 @@ Before any deployment:
 ## 🔧 Maintenance
 
 ### Weekly
-- Clean old snapshot backups: `npm run snapshots clean`
-- Validate current snapshots: `npm run snapshots validate`
+- Archive current snapshots: `npm run snapshots`
+- Restore from archive: `npm run snapshots:restore YYYY-MM-DD`
 - Review test execution times
 
 ### Monthly
