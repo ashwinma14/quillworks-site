@@ -31,15 +31,12 @@ jobs:
       - name: Run Chromatic
         uses: chromaui/action@v1
         with:
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}
           buildScriptName: build-storybook
-          exitZeroOnChanges: false
           onlyChanged: true
-          diffThreshold: 0.06
-          diffIncludeAntiAliasing: true
         env:
           NODE_ENV: production
+          CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
 
       - name: Detect baseline changes
         if: always()
