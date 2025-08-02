@@ -20,7 +20,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "chromatic": "chromatic --exit-zero-on-changes",
-    "compare-baseline": "node --experimental-modules tools/compare/compare-baseline.mjs"
+    "compare-baseline": "node --experimental-modules tools/compare/compare-baseline.mjs",
+    "snapshots": "node ./scripts/snapshots.js"
   },
   "engines": {
     "node": ">=20.x"
