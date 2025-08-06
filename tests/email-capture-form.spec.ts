@@ -55,6 +55,74 @@ test.describe('Email Capture Form', () => {
     await expect(page.locator('input[type="email"]')).toHaveValue('');
   });
 
+  test('should prevent double submission', async ({ page }) => {
+    // Mock Formspree API with delay to simulate network latency
+    await page.route('https://formspree.io/f/mvgqbovv', async (route) => {
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      await route.fulfill({ status: 200, body: '{}' });
+    });
+
+    // Fill email
+    await page.fill('input[type="email"]', 'test@example.com');
+
+    // Click submit button
+    await page.click('button:has-text("Stay in the Loop")');
+
+    // Button should show loading state and be disabled
+    const submitButton = page.getByRole('button', { name: /Submitting…/i });
+    await expect(submitButton).toBeVisible();
+    await expect(submitButton).toBeDisabled();
+    await expect(submitButton).toHaveAttribute('aria-busy', 'true');
+
+    // Try clicking again (should do nothing)
+    await submitButton.click({ force: true });
+
+    // Wait for success state
+    await expect(page.getByText(/thanks for joining the journey/i)).toBeVisible(
+      { timeout: 10000 }
+    );
+
+    // Button should still be disabled after success
+    await expect(
+      page.getByRole('button', { name: /Stay in the Loop/i })
+    ).toBeDisabled();
+  });
+
+  test('should prevent rapid clicks during submission', async ({ page }) => {
+    let submissionCount = 0;
+
+    // Mock Formspree API to count submissions
+    await page.route('https://formspree.io/f/mvgqbovv', async (route) => {
+      submissionCount++;
+      await new Promise((resolve) => setTimeout(resolve, 300));
+      await route.fulfill({ status: 200, body: '{}' });
+    });
+
+    // Fill email
+    await page.fill('input[type="email"]', 'test@example.com');
+
+    // First click to start submission
+    const submitButton = page.locator('button[type="submit"]');
+    await submitButton.click();
+
+    // Button should immediately show loading state
+    await expect(
+      page.getByRole('button', { name: /Submitting…/i })
+    ).toBeVisible();
+
+    // Try clicking multiple times while loading (should be ignored)
+    await submitButton.click({ force: true }).catch(() => {}); // Ignore errors from disabled button
+    await submitButton.click({ force: true }).catch(() => {}); // Ignore errors from disabled button
+
+    // Wait for success
+    await expect(page.getByText(/thanks for joining the journey/i)).toBeVisible(
+      { timeout: 10000 }
+    );
+
+    // Verify only one submission occurred
+    expect(submissionCount).toBe(1);
+  });
+
   test('should show error on failed submission', async ({ page }) => {
     // Mock Formspree API failure
     await page.route('https://formspree.io/f/mvgqbovv', (route) =>
