@@ -19,7 +19,7 @@ class MyDocument extends Document {
           />
           <script
             defer
-            data-domain="quillworks-site.vercel.app"
+            data-domain="quill.works"
             src="https://plausible.io/js/script.js"
           ></script>
           <link rel="icon" href="/favicon.ico" />
