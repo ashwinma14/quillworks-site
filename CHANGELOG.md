@@ -5,6 +5,25 @@ All notable changes to the Quillworks site will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2025-08-03] - 2025-08-06
+
+### Added
+- Double-submit prevention for email capture form
+- Loading state indicator ("Submitting…") during form submission
+- Comprehensive Playwright tests for double-submit scenarios
+
+### Changed
+- EmailCaptureForm button now disables during submission
+- Button shows loading text while request is in-flight
+- Updated visual regression snapshots for button styling
+
+### Fixed
+- Prevented multiple form submissions from rapid clicks
+- Added aria-busy attribute for better accessibility during loading
+
+### Security
+- Form submission now properly guards against duplicate requests
+
 ## [2025-08-02] - 2025-08-02
 
 ### Added
