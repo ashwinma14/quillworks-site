@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 
 const EmailCaptureForm: React.FC = () => {
-  const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [status, setStatus] = useState<
+    'idle' | 'loading' | 'success' | 'error'
+  >('idle');
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (status === 'loading') return; // Guard against rapid clicks
+
+    setStatus('loading');
     const form = e.currentTarget as HTMLFormElement;
     const data = new FormData(form);
 
@@ -45,9 +50,11 @@ const EmailCaptureForm: React.FC = () => {
       <div className="flex items-center gap-2">
         <button
           type="submit"
-          className="rounded-md bg-[#67705D] px-4 py-2 text-sm text-white transition hover:bg-[#55614F]"
+          disabled={status === 'loading' || status === 'success'}
+          aria-busy={status === 'loading'}
+          className="rounded-md bg-[#67705D] px-4 py-2 text-sm text-white transition hover:bg-[#55614F] disabled:opacity-50"
         >
-          Stay in the Loop
+          {status === 'loading' ? 'Submitting…' : 'Stay in the Loop'}
         </button>
 
         {status === 'success' && (
